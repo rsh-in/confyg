@@ -49,9 +49,9 @@
                 <button class="btn btn-outline-dark" @click="copyToClipboard">
                   <i class="bi bi-clipboard"></i>
                 </button>
-                <button class="btn btn-outline-dark" @click="showQRPanel">
+                <!-- <button class="btn btn-outline-dark" @click="showQRPanel">
                   <i class="bi bi-qr-code"></i>
-                </button>
+                </button> -->
               </div>
             </div>
           </div>
@@ -62,21 +62,21 @@
             v-if="!editMode"
             @click="jumpToEditMetadata"
           >
-            Create/Edit your own metadata
+            Create/Edit your confyg data
           </button>
           <button
             class="btn btn-lg btn-outline-primary w-100"
             v-if="editMode"
             @click="showUploadModal"
           >
-            Publish metadata on IPFS and blockchain
+            MINT NFT
           </button>
           <button
             class="btn btn-lg btn-outline-dark mt-3 w-100"
             v-if="editMode"
             @click="generateJSON"
           >
-            Generate JSON for manual uploading
+            Create your Confyg Metadata
           </button>
         </div>
       </div>
@@ -179,7 +179,7 @@
             </div>
             <!-- IM contacts -->
             <div class="row mt-4">
-              <h5>IM Contacts</h5>
+              <h5>Your Contacts</h5>
               <hr class="col-10" />
             </div>
             <div class="row" v-for="(im, idx) in meta.ims" :key="'im_' + idx">
@@ -208,7 +208,7 @@
                   +</button
                 ><input
                   type="text"
-                  placeholder="IM type"
+                  placeholder="Contacts"
                   class="w-75"
                   v-model="editModelIM.type"
                 />
@@ -382,7 +382,7 @@
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title">Publish metadata on IPFS and blockchain</h5>
+            <h5 class="modal-title">MINT NFT</h5>
             <button
               type="button"
               class="btn-close"
@@ -391,24 +391,9 @@
             ></button>
           </div>
           <div class="modal-body">
-            <small
-              >We are using
-              <a href="https://www.pinata.cloud/" target="_blank">Pinata</a> for
-              uploading your metadata to IPFS. Please
-              <a href="https://app.pinata.cloud/keys" target="_blank"
-                >generate a JWT key on Pinata</a
-              >
-              (select Pinning/pinJSONToIPFS), and copy it to this textarea.
-              <strong
-                >This page has no backend so we won't (and cannot) store your
-                Pinata key.</strong
-              >
-              Your metadata is owned by <strong>YOU</strong> on
-              <strong>YOUR</strong> Pinata account.</small
-            >
             <textarea
               class="w-100"
-              placeholder="Pinata JWT key"
+              placeholder="Pinata key"
               v-model="pinataKey"
             ></textarea>
           </div>
@@ -425,7 +410,7 @@
               class="btn btn-primary"
               @click="publishMetadata"
             >
-              Publish
+              Mint
             </button>
           </div>
         </div>
